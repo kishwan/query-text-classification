@@ -1,0 +1,34 @@
+UI_event,Location,Description
+search_bar.result_click,home page,type in search bar and choose a result from the suggested matches dropdown
+search_bar.history_result_click,home page,type in search bar and choose a result from the suggested matches dropdown. Suggestion comes from previous search history.
+search_view.search_results,search page,"Fires any time a search page loads, including after these actions:
+- enter search from search bar
+- change page number of search results
+- change search filter (in checkboxes on left or to include community results or filter result type)
+- user returns to search page"
+facet_sidebar.filter_change,search page,filter search - click on one of the filter checkboxes on the left side of search page
+search.unified_search_filter_menu_close,search page,filter search - choose something in the dropdown for result type at top of search page
+search_view.search_results.result_click,search page: search result card,"click on search result card/box (inside the box but not a link within the card). Also fires when:
+- bookmark/unbookmark a search result (but do not actually view it)
+- follow an account search result (but do not actually view it)
+- click on linked dataset/file/table within a dataset/project search result card"
+dataset_card.search_card.title_link,search page: search result card (dataset),click on search result title
+project_card.search_card.title_link,search page: search result card (project),click on search result title
+table_card.search_card.title_link,search page: search result card (table or file),click on search result title
+insight_card.search_card.title_link,search page: search result card (insight),click on search result title
+query_card.search_card.title_link,search page: search result card (query),click on search result title
+org_card.search_card.title_link,search page: search result card (org account),click on search result title
+agent_card.search_card.title_link,search page: search result card (indv account),click on search result title
+like_button.like,"search page: search result card (dataset, project, insight)",click bookmark button in search result. Fires when bookmarking and unbookmarking. Also fires when the user bookmark/unbookmarks from the dataset or project page.
+follow_button.follow,search page: search result card (account),click follow button in search result. Does not include unfollows.
+viewprofileactions.follow_or_unfollow_user,account page,Click to follow or unfollow account
+project_workspace.file_line,Workspace (Dataset/project explorer),click to view file
+filecard.files.fileview,Dataset page: file card,click on file name to view file
+tabular_preview.single_footer_right,Dataset page: file card,"click on ""see all"" at bottom of file card to view file"
+fileactions.view_button,Dataset page: file card,click on view button to view file
+file-card.open-in-app-button,Dataset page: file card,click on open in app button to open file in integrations
+fileactions.files.download-download-file,Dataset page: file card (download dropdown),"Within the download dropdown, click download"
+fileactions.files.download-file-copy,Dataset page: file card (download dropdown),"Within the download dropdown, click share URL"
+fileheader.tabular-files.open-in-app-button,Workspace (Dataset/project explorer),"when viewing file, click to open in an integration"
+file_renderer.modal_common.export_dropdown-download-file,Workspace (Dataset/project explorer file download dropdown),"when viewing download dropdown, click download"
+file_renderer.modal_common.export_dropdown-file-copy,Workspace (Dataset/project explorer file download dropdown),"when viewing download dropdown, click share URL"
