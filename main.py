@@ -9,7 +9,6 @@ class Controller(parameters):
 	def __init__(self):
 		# Preprocessing pipeline
 		self.data = self.prepare_data(parameters.num_words, parameters.seq_len)
-		
 		# Initialize the model
 		self.model = model(parameters)
 		
@@ -28,7 +27,7 @@ class Controller(parameters):
 		pr.word_to_idx()
 		pr.padding_sentences()
 		pr.split_data()
-
+	
 		return {'x_train': pr.x_train, 'y_train': pr.y_train, 'x_test': pr.x_test, 'y_test': pr.y_test}
 		
 if __name__ == '__main__':
