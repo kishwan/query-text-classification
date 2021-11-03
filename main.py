@@ -2,8 +2,8 @@ from src.parameters import parameters
 from src.preprocessing import preprocessing
 from src.model import model
 from src.run import Run
-		
 
+# ADAPTING FROM THIS MODEL https://github.com/FernandoLpz/Text-Classification-CNN-PyTorch
 class Controller(parameters):
 	
 	def __init__(self):
