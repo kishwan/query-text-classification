@@ -66,7 +66,7 @@ class model(nn.ModuleList):
 		
 	def forward(self, x):
 		# pass the sequence of tokens through the embedding layer
-		x = self.embedding(x)
+		x = self.embedding(torch.stack(x))
 		
 		# Convolution layer 1 is applied
 		x1 = self.conv_1(x)

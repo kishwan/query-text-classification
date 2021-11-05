@@ -4,7 +4,7 @@ import torch.nn.functional as F
 
 from torch.utils.data import Dataset, DataLoader
 
-class DatasetMaper(Dataset):
+class DatasetMapper(Dataset):
 
 	def __init__(self, x, y):
 		self.x = x
@@ -23,8 +23,8 @@ class Run:
 	def train(model, data, params):
 		
 		# Initialize dataset maper
-		train = DatasetMaper(data['x_train'], data['y_train'])
-		test = DatasetMaper(data['x_test'], data['y_test'])
+		train = DatasetMapper(data['x_train'], data['y_train'])
+		test = DatasetMapper(data['x_test'], data['y_test'])
 		
 		# Initialize loaders
 		loader_train = DataLoader(train, batch_size=params.batch_size)
@@ -42,14 +42,14 @@ class Run:
 			for x_batch, y_batch in loader_train:
 			
 				y_batch = y_batch.type(torch.FloatTensor)
-				
+
 				# Feed the model
 				y_pred = model(x_batch)
 				
 				# Loss calculation
 				loss = F.binary_cross_entropy(y_pred, y_batch)
 				
-				# Clean gradientes
+				# Clean gradients
 				optimizer.zero_grad()
 				
 				# Gradients calculation
@@ -76,9 +76,9 @@ class Run:
 		model.eval()
 		predictions = []
 		
-		# Starst evaluation phase
+		# Start evaluation phase
 		with torch.no_grad():
-			for x_batch, y_batch in loader_test:
+			for x_batch in loader_test:
 				y_pred = model(x_batch)
 				predictions += list(y_pred.detach().numpy())
 		return predictions
