@@ -26,7 +26,7 @@ class model(nn.ModuleList):
 		self.embedding = nn.Embedding(self.num_words + 1, self.embedding_size, padding_idx=0)
 		
 		# define the convolutional layers
-		self.conv_1 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_1, self.stride)
+		self.conv_1 = nn.Conv1d(self.embedding_size, self.out_channels, self.kernel_1, self.stride)
 		self.conv_2 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_2, self.stride)
 		self.conv_3 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_3, self.stride)
 		self.conv_4 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_4, self.stride)
@@ -69,7 +69,9 @@ class model(nn.ModuleList):
 		x = self.embedding(torch.stack(x))
 		
 		# Convolution layer 1 is applied
-		print(x)
+		x = torch.permute(x, (0, 2, 1))
+		print(x.size())
+		#x = torch.transpose(x, -3, 0)
 		x1 = self.conv_1(x)
 		x1 = torch.relu(x1)
 		x1 = self.pool_1(x1)
