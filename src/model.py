@@ -8,7 +8,7 @@ class model(nn.ModuleList):
 	def __init__(self, params):
 		super(model, self).__init__()
 
-		self.seq_len = params.seq_len
+		self.in_channels = params.in_channels
 		self.num_words = params.num_words
 		self.embedding_size = params.embedding_size
 		self.dropout = nn.Dropout(0.25)
@@ -18,7 +18,7 @@ class model(nn.ModuleList):
 		self.kernel_3 = 4
 		self.kernel_4 = 5
 		
-		self.out_size = params.out_size
+		self.out_channels = params.out_channels
 
 		self.stride = params.stride
 		
@@ -26,10 +26,10 @@ class model(nn.ModuleList):
 		self.embedding = nn.Embedding(self.num_words + 1, self.embedding_size, padding_idx=0)
 		
 		# define the convolutional layers
-		self.conv_1 = nn.Conv1d(self.seq_len, self.out_size, self.kernel_1, self.stride)
-		self.conv_2 = nn.Conv1d(self.seq_len, self.out_size, self.kernel_2, self.stride)
-		self.conv_3 = nn.Conv1d(self.seq_len, self.out_size, self.kernel_3, self.stride)
-		self.conv_4 = nn.Conv1d(self.seq_len, self.out_size, self.kernel_4, self.stride)
+		self.conv_1 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_1, self.stride)
+		self.conv_2 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_2, self.stride)
+		self.conv_3 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_3, self.stride)
+		self.conv_4 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_4, self.stride)
 		
 		# define the max pooling layers
 		self.pool_1 = nn.MaxPool1d(self.kernel_1, self.stride)
@@ -62,7 +62,7 @@ class model(nn.ModuleList):
 		out_pool_4 = ((out_conv_4 - 1 * (self.kernel_4 - 1) - 1) / self.stride) + 1
 		out_pool_4 = math.floor(out_pool_4)
 		
-		return (out_pool_1 + out_pool_2 + out_pool_3 + out_pool_4) * self.out_size
+		return (out_pool_1 + out_pool_2 + out_pool_3 + out_pool_4) * self.out_channels
 		
 	def forward(self, x):
 		# pass the sequence of tokens through the embedding layer

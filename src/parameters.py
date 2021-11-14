@@ -2,11 +2,11 @@ from dataclasses import dataclass
 
 @dataclass
 class parameters:
-   seq_len: int = 35
+   in_channels: int = 35
    num_words: int = 2000
    
    embedding_size: int = 64
-   out_size: int = 32
+   out_channels: int = 32
    stride: int = 2
    
    epochs: int = 10

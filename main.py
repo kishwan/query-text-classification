@@ -8,7 +8,7 @@ class Controller(parameters):
 	
 	def __init__(self):
 		# Preprocessing pipeline
-		self.data = self.prepare_data(parameters.num_words, parameters.seq_len)
+		self.data = self.prepare_data(parameters.num_words, parameters.in_channels)
 		# Initialize the model
 		self.model = model(parameters)
 		
@@ -17,9 +17,9 @@ class Controller(parameters):
 		
 		
 	@staticmethod
-	def prepare_data(num_words, seq_len):
+	def prepare_data(num_words, in_channels):
 		# Preprocessing pipeline
-		pr = preprocessing(num_words, seq_len)
+		pr = preprocessing(num_words, in_channels)
 		pr.load_data()
 		pr.clean_text()
 		pr.text_tokenization()
