@@ -69,13 +69,14 @@ class model(nn.ModuleList):
 		x = self.embedding(torch.stack(x))
 		
 		# Convolution layer 1 is applied
+		print(x)
 		x1 = self.conv_1(x)
 		x1 = torch.relu(x1)
 		x1 = self.pool_1(x1)
 		
 		# Convolution layer 2 is applied
 		x2 = self.conv_2(x)
-		x2 = torch.relu((x2))
+		x2 = torch.relu(x2)
 		x2 = self.pool_2(x2)
 	
 		# Convolution layer 3 is applied
