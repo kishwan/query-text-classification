@@ -27,9 +27,9 @@ class model(nn.ModuleList):
 		
 		# define the convolutional layers
 		self.conv_1 = nn.Conv1d(self.embedding_size, self.out_channels, self.kernel_1, self.stride)
-		self.conv_2 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_2, self.stride)
-		self.conv_3 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_3, self.stride)
-		self.conv_4 = nn.Conv1d(self.in_channels, self.out_channels, self.kernel_4, self.stride)
+		self.conv_2 = nn.Conv1d(self.embedding_size, self.out_channels, self.kernel_2, self.stride)
+		self.conv_3 = nn.Conv1d(self.embedding_size,self.out_channels, self.kernel_3, self.stride)
+		self.conv_4 = nn.Conv1d(self.embedding_size, self.out_channels, self.kernel_4, self.stride)
 		
 		# define the max pooling layers
 		self.pool_1 = nn.MaxPool1d(self.kernel_1, self.stride)
